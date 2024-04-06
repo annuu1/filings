@@ -3,6 +3,7 @@ import customtkinter as ctk
 import json
 import pdfkit
 from codes import codes
+from customtkinter import filedialog
 
 class Dependency_manager():
     def __init__(self):
@@ -20,13 +21,16 @@ class MainFrame(ctk.CTkFrame):
         super().__init__(master)
         self.grid(row = 0, column = 0, sticky = "nsew", columnspan = 5)
         
+        self.json_path = None
+
         #grid config
         self.columnconfigure((0,1,2,3,4), weight=1)
 
-        ctk.CTkLabel(self, text="Enter JSON Path:").grid(row = 0, column = 0)
-        
-        self.json_path = ctk.CTkEntry(self)
-        self.json_path.grid(row = 0, column = 1, sticky = "nsew")
+        self.ask_file =ctk.CTkLabel(self, text="Open File:", width=50)
+        self.ask_file.grid(row = 0, column = 0)
+
+        self.open_file_button = ctk.CTkButton(self, text="Select File", command=self.get_file)
+        self.open_file_button.grid(row = 0, column = 1, sticky = "nsew")
 
         self.gender = ctk.CTkComboBox(self, values=["Male", "Female"])
         self.gender.grid(row = 0, column = 3)
@@ -42,11 +46,23 @@ class MainFrame(ctk.CTkFrame):
     def create_pdf(self):
         methods = Methods()
 
-        path = self.json_path.get()
+        path = self.json_path
         gender = self.gender.get()
         regime = self.regime.get()
         
         methods.create_pdf(path, gender, regime)
+    
+    def get_file(self):
+        self.json_path = filedialog.askopenfilenames(initialdir = r"C:\Users\avnin\Downloads",
+										title = "Select a File",
+										filetypes = (("JSON files",
+														"*.json*"),
+													("all files",
+														"*.*")))
+        if self.json_path:  # Check if any file is selected
+            self.json_path = str(self.json_path[0])
+
+        # self.ask_file.configure(text = self.json_path)
 
 class Methods:
     def __init__(self):
