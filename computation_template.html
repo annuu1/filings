@@ -1,0 +1,395 @@
+<!-- invoice_template.html -->
+<html>
+<head>
+    <style>
+        *{
+            font-family: Cambria,Arial, Helvetica, sans-serif;
+        }
+        h1{
+            font-size: 40px;
+        }
+        td{
+            font-size: 22px;
+            padding: 4px;
+        }
+        .bold_text {
+        font-weight: bold;
+    }
+        
+    </style>
+   
+</head>
+<body>
+
+    <table style="width: 1020px; height: 57px;">
+        <tbody>
+        <tr>
+        <td style="width: 493.167px;">
+        <h1>{{name}}</h1>
+        </td>
+        <td style="width: 536.033px; text-align: right; font-size: 20px">
+        <h1>{{ay}}</h1>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1021.8px;">
+        <tbody>
+        <tr>
+        <td style="width: 1022.8px;">
+        <p>Address: {{address}}</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="height: 60px; width: 1021.8px;">
+        <tbody>
+        <tr style="height: 37px;">
+        <td style="width: 1011.8px; height: 37px;">
+        <p>Mobile:{{mob}}</p>
+        </td>
+        </tr>
+        <tr style="height: 22.2px;">
+        <td style="width: 1011.8px; height: 22.2px;">
+        <h4>E-Mail:{{email}}</h4>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 class = "bold_text" style="text-align: center;"><span style="color: #a50202;">Computation of Income (ITR4)</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <table style="width: 1024px; float: left;">
+        <tbody>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 135px; height: 13px;">PAN: </td>
+        <td style="width: 320.5px; height: 13px;">&nbsp;{{pan}}</td>
+        <td class = "bold_text" style="width: 288.5px; height: 13px;">Status:</td>
+        <td style="width: 283px; height: 13px;">&nbsp;{{status}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 135px; height: 13px;">Date of Birth</td>
+        <td style="width: 289.5px; height: 13px;">&nbsp;{{dob}}</td>
+        <td class = "bold_text" style="width: 288.5px; height: 13px;">Residential Status:</td>
+        <td style="width: 283px; height: 13px;">&nbsp;{{res_status}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 180px; height: 13px;">Father's Name:</td>
+        <td style="width: 289.5px; height: 13px;">&nbsp;{{father}}</td>
+        <td class = "bold_text" style="width: 288.5px; height: 13px;">Gender</td>
+        <td style="width: 283px; height: 13px;">&nbsp;{{gender}}</td>
+        </tr>
+        <tr style="height: 13.9333px;">
+        <td class = "bold_text" style="width: 135px; height: 13.9333px;">Bank A/C no.:</td>
+        <td style="width: 289.5px; height: 13.9333px;">&nbsp;{{ac}}</td>
+        <td class = "bold_text" style="width: 288.5px; height: 13.9333px;">IFSC code</td>
+        <td style="width: 283px; height: 13.9333px;">&nbsp;{{ifsc}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 135px; height: 13px;">E-Filing Status:</td>
+        <td style="width: 289.5px; height: 13px;">&nbsp;{{filing_status}}</td>
+        <td class = "bold_text" style="width: 288.5px; height: 13px;">Aadhaar Card Number</td>
+        <td style="width: 283px; height: 13px;">&nbsp;{{aadhar}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 135px; height: 13px;">Selected tax:</td>
+
+        <td style="width: 289.5px; height: 13px;">&nbsp;{{regime}}</td>
+        <td style="width: 288.5px; height: 13px;">&nbsp;</td>
+        <td style="width: 283px; height: 13px;">&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1022.8px;">
+        <tbody>
+        <tr style="height: 47.1333px;">
+        <td style="width: 1012.8px; height: 47.1333px;">
+        <h2 style="text-align: center;"><span style="color: #a50202;">Tax Summary:</span></h2>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1024px;">
+        <tbody>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">income from Business/Profession</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{IncomeFromBusinessProf}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 513.033px; height: 13px;">Income From other sources</td>
+        <td style="width: 496.167px; height: 13px;">&nbsp;</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">Other Income</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">{{other_income}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">Exempt Income (not included in Total Income)</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">{{exempt_income}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 513.033px; text-align: left; height: 13px;">Gross Total Income</td>
+        <td class = "bold_text" style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{gross_income}}</td>
+        </tr>
+        <tr style="height: 13.9333px;">
+        <td class = "bold_text" style="width: 513.033px; height: 13.9333px;">Less: Total Deductions</td>
+        <td style="width: 496.167px; height: 13.9333px; text-align: right;">&nbsp;{{deductions}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">Net Income (Rounded off u/s 288 A)</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{rounded_off}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">Income Tax other than Special Rates</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{special_rates_tax}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 513.033px; height: 13px;">Total Tax</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{total_tax}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 513.033px; height: 13px;">Less : Income Tax Rebate (Sec.87A)</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{rebate}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 513.033px; height: 13px;">Tax Payable</td>
+        <td style="width: 496.167px; height: 13px; text-align: right;">&nbsp;{{tax_payable}}</td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Less: Taxes Paid(TDS)</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <div>
+        <table style="width: 1024px; height: 40px;">
+        <tbody>
+        <tr>
+        <td style="width: 541px;">Tax Deducted at Source (TDS)</td>
+        <td style="width: 467px; text-align: right;">&nbsp;{{tds}}</td>
+        </tr>
+        <tr>
+        <td style="width: 541px;">Net Tax Refund ( Rounded off u/s 288 B )</td>
+        <td class = "bold_text" style="width: 467px; text-align: right;">&nbsp;{{tds_round}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Computation of Total Income</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <div>
+        <table style="height: 78px;" width="1027">
+        <tbody>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 506.1px; height: 13px;">Income Heads</td>
+        <td class = "bold_text" style="width: 506.1px; text-align: right; height: 13px;">&nbsp;Taxable Income</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 506.1px; height: 13px;">Business/Profession</td>
+        <td style="width: 506.1px; text-align: right; height: 13px;">&nbsp;{{IncomeFromBusinessProf}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 506.1px; height: 13px;">Other Income</td>
+        <td style="width: 506.1px; text-align: right; height: 13px;">&nbsp;{{other_income}}</td>
+        </tr>
+        <tr style="height: 13.4667px;">
+        <td style="width: 506.1px; height: 13.4667px;">&nbsp;</td>
+        <td style="width: 506.1px; text-align: right; height: 13.4667px;">&nbsp;</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 506.1px; height: 13px;">Gross Total Income</td>
+        <td class = "bold_text" style="width: 506.1px; text-align: right; height: 13px;">&nbsp;{{gross_total_income}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 506.1px; height: 13px;">Less : Deduction under Chapter VI-A</td>
+        <td style="width: 506.1px; text-align: right; height: 13px;">&nbsp;{{deductions}}</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 506.1px; height: 13px;">Total Net Income</td>
+        <td class = "bold_text" style="width: 506.1px; text-align: right; height: 13px;">&nbsp;{{total_net_income}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Bank Account Details</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <table style="width: 1028px; height: 54px;" border="2">
+        <tbody>
+        <tr>
+        <td class = "bold_text" style="width: 335.867px;">IFSC Code</td>
+        <td class = "bold_text" style="width: 335.867px; text-align: center;">Name of the Bank</td>
+        <td class = "bold_text" style="width: 335.867px; text-align: center;">Account No.</td>
+        </tr>
+        <tr>
+        <td style="width: 335.867px;">&nbsp;{{ifsc}}</td>
+        <td style="width: 335.867px; text-align: center;">{{bank}}</td>
+        <td style="width: 335.867px; text-align: center;">{{ac}}</td>
+        </tr>
+        </tbody>
+        </table>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Taxable Other Income:{{other_income}}</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <div>
+        <table style="width: 1029px; height: 77px;">
+        <tbody>
+        <tr style="height: 18px;">
+        <td class = "bold_text" style="width: 507.5px; height: 18px;">Income Heads</td>
+        <td class = "bold_text" style="width: 506.5px; height: 18px; text-align: right;">Taxable</td>
+        </tr>
+        <tr style="height: 18.9334px;">
+        <td style="width: 507.5px; height: 18.9334px;">Other Income</td>
+        <td style="width: 506.5px; height: 18.9334px; text-align: right;">&nbsp;{{other_income}}</td>
+        </tr>
+        <tr style="height: 18px;">
+        <td class = "bold_text" style="width: 507.5px; height: 18px;">Total Other Income</td>
+        <td class = "bold_text" style="width: 506.5px; height: 18px; text-align: right;">&nbsp;{{total_other_income}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Taxable Business / Profession: {{IncomeFromBusinessProf}}</span></h2>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        <div>
+        <div>
+        <table style="width: 1024px; height: 27px;" border="2">
+        <tbody>
+        <tr>
+        <td class = "bold_text" style="width: 442px;">Business nature</td>
+        <td class = "bold_text" style="width: 105.683px; text-align: center;">Business code</td>
+        <td class = "bold_text" style="width: 448.317px; text-align: right;">Trade Name</td>
+        </tr>
+        <tr>
+        <td style="width: 442px;">&nbsp;{{b_nature}}</td>
+        <td style="width: 105.683px; text-align: center;">{{b_code}}</td>
+        <td style="width: 448.317px; text-align: right;">{{b_trade_name}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>
+        <table style="width: 1027.5px; height: 55px;">
+        <tbody>
+        <tr style="height: 13.8667px;">
+        <td class = "bold_text" style="width: 503px; height: 13.8667px;">Particulars</td>
+        <td class = "bold_text" style="width: 703px; text-align: center; height: 13.8667px;">Digital and Non-Digital Transactions</td>
+        <td class = "bold_text" style="width: 509.5px; text-align: right; height: 13.8667px;">Total</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td style="width: 503px; height: 13px;">Gross Receipt</td>
+        <td class = "bold_text" style="width: 503px; text-align: center; height: 13px;">&nbsp;{{IncomeFromBusinessProf}}</td>
+        <td class = "bold_text" style="width: 509.5px; text-align: right; height: 13px;">&nbsp;{{IncomeFromBusinessProf}}&nbsp;</td>
+        </tr>
+        <tr style="height: 13px;">
+        <td class = "bold_text" style="width: 503px; height: 13px;">Income u/s 44AD</td>
+        <td style="width: 503px; height: 13px;">&nbsp;</td>
+        <td style="width: 509.5px; height: 13px;">&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <table style="width: 1022.8px;">
+            <tbody>
+            <tr style="height: 47.1333px;">
+            <td style="width: 1012.8px; height: 47.1333px;">
+            <h2 style="text-align: center;"><span style="color: #a50202;">Financial Particulars</span></h2>
+            </td>
+            </tr>
+            </tbody>
+        
+        <div>
+        <table style="width: 1023px; height: 21px;">
+        <tbody>
+        <tr>
+        <td class = "bold_text" style="width: 1013.8px; text-align: left;"><h3>In case of presumptive income</h3</td>
+        </tr>
+        <tr>
+        <td style="width: 1013.8px; text-align: center;">Financial particulars as on 31/03/2024</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <div>
+        <table style="width: 1023px;" border="2">
+        <tbody>
+        <tr>
+        <td class = "bold_text" style="width: 492px;">Sundry Debtors</td>
+        <td style="width: 515px; text-align: right;">&nbsp;{{sundry_deb}}</td>
+        </tr>
+        <tr>
+        <td class = "bold_text" style="width: 492px;">Sundry Creditors</td>
+        <td style="width: 515px; text-align: right;">&nbsp;{{sundry_cred}}</td>
+        </tr>
+        <tr>
+        <td class = "bold_text" style="width: 492px;">Stock-in-trade</td>
+        <td style="width: 515px; text-align: right;">&nbsp;{{inventory}}</td>
+        </tr>
+        <tr>
+        <td class = "bold_text" style="width: 492px;">Cash Balance</td>
+        <td style="width: 515px; text-align: right;">&nbsp;{{cash}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <h2>&nbsp;</h2>
+        <h2>Signature</h2>
+        <h3>For {{name}}</h3>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <h2 style="text-align: center;">&nbsp;</h2>
+
+</body>
+</html>
