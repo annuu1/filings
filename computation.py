@@ -8,7 +8,6 @@ class Dependency_manager():
     def __init__(self):
         pass
 
-
 class Computation(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -23,18 +22,31 @@ class MainFrame(ctk.CTkFrame):
         
         #grid config
         self.columnconfigure((0,1,2,3,4), weight=1)
+
+        ctk.CTkLabel(self, text="Enter JSON Path:").grid(row = 0, column = 0)
+        
         self.json_path = ctk.CTkEntry(self)
         self.json_path.grid(row = 0, column = 1, sticky = "nsew")
-        ctk.CTkLabel(self, text="Enter JSON Path:").grid(row = 0, column = 0)
+
+        self.gender = ctk.CTkComboBox(self, values=["Male", "Female"])
+        self.gender.grid(row = 0, column = 3)
+        self.gender.set(value="Male")
 
         self.regime = ctk.CTkComboBox(self, values=["Old Regime", "New Regime"])
+        self.regime.grid(row = 0, column = 4)
+        self.regime.set(value="New Regime")
 
         self.generate_pdf = ctk.CTkButton(self, text="Generate Pdf", command=self.create_pdf)
         self.generate_pdf.grid(row = 1, column = 0)
 
     def create_pdf(self):
         methods = Methods()
-        methods.create_pdf(self.json_path.get())
+
+        path = self.json_path.get()
+        gender = self.gender.get()
+        regime = self.regime.get()
+        
+        methods.create_pdf(path, gender, regime)
 
 class Methods:
     def __init__(self):
@@ -42,14 +54,14 @@ class Methods:
 
     def generate_comp_pdf(self,customer_name, ay, address, mob, email, pan, status, dob, res_status, father, gender, ac, ifsc, filing_status, aadhar, regime,IncomeFromBusinessProf, income, other_income, exempt_income, gross_income, deductions, rounded_off, special_rates_tax, total_tax, rebate, tax_payable, tds, tds_round, gross_total_income, total_net_income, bank, b_nature, b_code, b_trade_name, sundry_deb, sundry_cred, inventory, cash, total_other_income):
         template_path = r'D:\Study\Python Projects\filings\computation_template.html'
-        output_path = f'computations/{customer_name} COMP {ay}.pdf'
+        output_path = f"C:\\Users\\avnin\\Desktop\\computations\\{customer_name} COMP {ay}.pdf"
 
         # Replace placeholders in the template
         with open(template_path, 'r') as template_file:
             template_content = template_file.read()
-            template_content = template_content.replace('{{name}}', customer_name)
-            template_content = template_content.replace('{{ay}}', ay)
-            template_content = template_content.replace('{{address}}', address)
+            template_content = template_content.replace('{{name}}', str(customer_name))
+            template_content = template_content.replace('{{ay}}', str(ay))
+            template_content = template_content.replace('{{address}}', str(address))
             template_content = template_content.replace('{{mob}}', str(mob))
             template_content = template_content.replace('{{email}}', email)
             template_content = template_content.replace('{{pan}}', pan)
@@ -88,11 +100,10 @@ class Methods:
             template_content = template_content.replace('{{total_other_income}}', str(total_other_income))
 
         # Generate PDF
-        pdfkit.from_string(template_content, output_path, configuration=pdfkit.configuration(wkhtmltopdf=r"D:\my files\Applications\wkhtmltopdf.exe"))
-
-
+        config = pdfkit.configuration(wkhtmltopdf=r'D:\my files\Applications\wkhtmltopdf.exe')
+        pdfkit.from_string(template_content, output_path, configuration=config) #pdfkit.configuration(wkhtmltopdf=r"D:\my files\Applications\wkhtmltopdf.exe"))
         
-    def create_pdf(self, file_path):
+    def create_pdf(self, file_path, gender, regime):
         # file_path = r"C:\Users\avnin\Downloads\BXFPA4275G_upload_2024-25_03-04-2024-11-51.json"
         script_dir = os.path.dirname(os.path.abspath(__file__))
         # Join the script directory with the provided file path
@@ -101,7 +112,7 @@ class Methods:
         print("Current working directory:", os.getcwd())
         
         try:
-            with open(absolute_file_path, 'r') as json_file:
+            with open(absolute_file_path, 'r', encoding='utf-8') as json_file:
                 itr_data = json.load(json_file)
                 # Extract values
                 customer_name = itr_data['ITR']['ITR4']['Verification']['Declaration']['AssesseeVerName'] #+ ' ' + itr_data['ITR']['ITR4']['PersonalInfo']['AssesseeName']['SurNameOrOrgName']
@@ -111,7 +122,7 @@ class Methods:
                 address_values = [str(value) for key, value in address_data.items() if key not in excluded_keys]
                 address = ', '.join(address_values)
 
-                gender='Male'
+                # gender='Male'
                 mob = itr_data['ITR']['ITR4']['PersonalInfo']['Address']['MobileNo']
                 email = itr_data['ITR']['ITR4']['PersonalInfo']['Address']['EmailAddress']
                 pan = itr_data['ITR']['ITR4']['PersonalInfo']['PAN']
@@ -123,7 +134,7 @@ class Methods:
                 ifsc = itr_data['ITR']['ITR4']['Refund']['BankAccountDtls']['AddtnlBankDetails'][0]['IFSCCode']
                 filing_status = "Filed" #itr_data['ITR']['ITR4']['FilingStatus']['ReturnFileSec']
                 aadhar = itr_data['ITR']['ITR4']['PersonalInfo']['AadhaarCardNo']
-                regime = "New Regime" #itr_data['ITR']['ITR4']['FilingStatus']['OptOutNewTaxRegime']
+                # regime = "New Regime" #itr_data['ITR']['ITR4']['FilingStatus']['OptOutNewTaxRegime']
                 IncomeFromBusinessProf = itr_data['ITR']['ITR4']['IncomeDeductions']['IncomeFromBusinessProf']
                 income = itr_data['ITR']['ITR4']['IncomeDeductions']['IncomeFromBusinessProf']
                 # Some values not provided in the data, hence set to 0
@@ -202,8 +213,6 @@ class Methods:
         except KeyError as e:
             print(f"Key not found in JSON data: {e}")
 
-
-        
 if __name__ == "__main__":
     comp = Computation()
     comp.mainloop()
