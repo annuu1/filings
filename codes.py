@@ -1,7 +1,7 @@
 codes = {
     "09023": "Retail sale in non-specialized stores",
     "09028": "Retail sale of other products n.e.c",
-    "14007": "Other services n.e.c. ",
+    "14007": "Cyber cafe",
     "01001": "Growing and manufacturing of tea",
     "01002": "Growing and manufacturing of coffee",
     "01003": "Growing and manufacturing of rubber",
@@ -243,7 +243,7 @@ codes = {
     "21005": "Retail sale of furniture, lighting equipment and other household articles",
     "21006": "Retail sale of hardware, paints and glass",
     "21007": "Retail sale of books, newspapers and stationary",
-    "21008": "Retail sale of music and video recordings, sporting equipment, games and toys",
+    "21008": "Other services",
     "21009": "Retail sale of cultural and recreational goods in specialized stores",
     "21010": "Retail sale of information and communication equipment in specialized stores",
     "21011": "Retail sale of other household equipment in specialized stores",

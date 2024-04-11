@@ -77,11 +77,11 @@ class Methods:
             search_mob.send_keys(Keys.CONTROL, 'a')
             search_mob.send_keys(str(mobile))
         
-            sleep_time = random.randint(5, 25)
+            sleep_time = random.randint(25, 60)
             time.sleep(sleep_time)
 
             search_mob.send_keys(Keys.ENTER)
-            time.sleep(0.5)
+            time.sleep(2)
 
             try:
                 saved_contact = None
@@ -94,7 +94,7 @@ class Methods:
             else:
                 message_box = driver.find_element(By.XPATH, '//*[@id=\"main\"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p')
                 message_box.send_keys(Keys.CONTROL, 'v')
-                time.sleep(0.5)
+                time.sleep(1)
                 
                 send_button = driver.find_element(By.XPATH, '//*[@id=\"main\"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p')
                 send_button.send_keys(Keys.ENTER)

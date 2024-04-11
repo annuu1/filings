@@ -43,14 +43,19 @@ class MainFrame(ctk.CTkFrame):
         self.generate_pdf = ctk.CTkButton(self, text="Generate Pdf", command=self.create_pdf)
         self.generate_pdf.grid(row = 1, column = 0)
 
+        self.acknowledgement= ctk.CTkEntry(self)
+        self.acknowledgement.grid(row = 1, column = 1)
+
     def create_pdf(self):
         methods = Methods()
 
         path = self.json_path
         gender = self.gender.get()
         regime = self.regime.get()
+        acknowledgement = self.acknowledgement.get()
+        print(acknowledgement)
         
-        methods.create_pdf(path, gender, regime)
+        methods.create_pdf(path, gender, regime, acknowledgement)
     
     def get_file(self):
         self.json_path = filedialog.askopenfilenames(initialdir = r"C:\Users\avnin\Downloads",
@@ -68,7 +73,7 @@ class Methods:
     def __init__(self):
         pass
 
-    def generate_comp_pdf(self,customer_name, ay, address, mob, email, pan, status, dob, res_status, father, gender, ac, ifsc, filing_status, aadhar, regime,IncomeFromBusinessProf, income, other_income, exempt_income, gross_income, deductions, rounded_off, special_rates_tax, total_tax, rebate, tax_payable, tds, tds_round, gross_total_income, total_net_income, bank, b_nature, b_code, b_trade_name, sundry_deb, sundry_cred, inventory, cash, total_other_income):
+    def generate_comp_pdf(self,customer_name, ay, address, mob, email, pan, status, dob, res_status, father, gender, ac, ifsc, filing_status, aadhar, regime, acknowledgement, IncomeFromBusinessProf, income, other_income, exempt_income, gross_income, deductions, rounded_off, special_rates_tax, total_tax, rebate, tax_payable, tds, tds_round, gross_total_income, total_net_income, bank, b_nature, b_code, b_trade_name, sundry_deb, sundry_cred, inventory, cash, total_other_income):
         template_path = r'D:\Study\Python Projects\filings\computation_template.html'
         output_path = f"C:\\Users\\avnin\\Desktop\\computations\\{customer_name} COMP {ay}.pdf"
 
@@ -91,6 +96,7 @@ class Methods:
             template_content = template_content.replace('{{filing_status}}', str(filing_status))
             template_content = template_content.replace('{{aadhar}}', aadhar)
             template_content = template_content.replace('{{regime}}', regime)
+            template_content = template_content.replace('{{acknowledgement}}', acknowledgement)
             template_content = template_content.replace('{{IncomeFromBusinessProf}}', str(IncomeFromBusinessProf))
             template_content = template_content.replace('{{other_income}}', str(other_income))
             template_content = template_content.replace('{{exempt_income}}', str(exempt_income))
@@ -119,7 +125,7 @@ class Methods:
         config = pdfkit.configuration(wkhtmltopdf=r'D:\my files\Applications\wkhtmltopdf.exe')
         pdfkit.from_string(template_content, output_path, configuration=config) #pdfkit.configuration(wkhtmltopdf=r"D:\my files\Applications\wkhtmltopdf.exe"))
         
-    def create_pdf(self, file_path, gender, regime):
+    def create_pdf(self, file_path, gender, regime, acknowledgement):
         # file_path = r"C:\Users\avnin\Downloads\BXFPA4275G_upload_2024-25_03-04-2024-11-51.json"
         script_dir = os.path.dirname(os.path.abspath(__file__))
         # Join the script directory with the provided file path
@@ -197,6 +203,7 @@ class Methods:
                 filing_status,
                 aadhar,
                 regime,
+                acknowledgement,
                 IncomeFromBusinessProf,
                 income,
                 other_income,
