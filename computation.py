@@ -27,24 +27,25 @@ class MainFrame(ctk.CTkFrame):
         self.columnconfigure((0,1,2,3,4), weight=1)
 
         self.ask_file =ctk.CTkLabel(self, text="Open File:", width=50)
-        self.ask_file.grid(row = 0, column = 0)
+        self.ask_file.grid(row = 0, column = 0, padx = (5,5), pady = (5,5), sticky = "nsew")
 
         self.open_file_button = ctk.CTkButton(self, text="Select File", command=self.get_file)
-        self.open_file_button.grid(row = 0, column = 1, sticky = "nsew")
+        self.open_file_button.grid(row = 0, column = 1, padx = (5,5), pady = (5,5), sticky = "nsew")
 
         self.gender = ctk.CTkComboBox(self, values=["Male", "Female"])
-        self.gender.grid(row = 0, column = 3)
+        self.gender.grid(row = 0, column = 3, padx = (5,5), pady = (5,5), sticky = "nsew")
         self.gender.set(value="Male")
 
         self.regime = ctk.CTkComboBox(self, values=["Old Regime", "New Regime"])
-        self.regime.grid(row = 0, column = 4)
+        self.regime.grid(row = 0, column = 4, padx = (5,5), pady = (5,5), sticky = "nsew")
         self.regime.set(value="New Regime")
-
-        self.generate_pdf = ctk.CTkButton(self, text="Generate Pdf", command=self.create_pdf)
-        self.generate_pdf.grid(row = 1, column = 0)
+        ctk.CTkLabel(self, text="Enter Ack").grid(row = 1, column = 0, padx = (5,5), pady = (5,5), sticky = "nsew")
 
         self.acknowledgement= ctk.CTkEntry(self)
-        self.acknowledgement.grid(row = 1, column = 1)
+        self.acknowledgement.grid(row = 1, column = 1, padx = (5,5), pady = (5,5), sticky = "nsew")
+
+        self.generate_pdf = ctk.CTkButton(self, text="Generate Pdf", command=self.create_pdf)
+        self.generate_pdf.grid(row = 5, column = 0, columnspan = 5,  padx = (5,5), pady = (5,5), sticky = "nsew")
 
     def create_pdf(self):
         methods = Methods()
